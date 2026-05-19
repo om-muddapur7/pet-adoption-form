@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const Form = () => {
     const navigate = useNavigate();
-    
+
 	const [petName, setPetName] = useState("");
 	const [petType, setPetType] = useState("");
 	const [name, setName] = useState("");
@@ -14,6 +14,16 @@ const Form = () => {
 	const [phone, setPhone] = useState("");
 
 	const handleSubmit = () => {
+
+        if(!petName || !petType || !name || !email || !phone){
+            alert("All fields required");
+            return;
+        }
+
+        if(phone.length !== 10){
+            alert("Phone no length must be 10 digits");
+            return;
+        }
 		
 		navigate("/table", {
 			state: {
